@@ -1,0 +1,25 @@
+{
+  "masterSha256": "d4c33c285a714311e47ac1814862e0e88c56f1adb60be03a1dde3f63f8cadf65",
+  "sourceSize": {
+    "width": 1254,
+    "height": 1254
+  },
+  "operation": "corner-connected exterior only (RGB <= 12); centered crop/padding and native resample; no re-drawing",
+  "crop": {
+    "x": 65,
+    "y": 65,
+    "width": 1123,
+    "height": 1123
+  },
+  "bounds": {
+    "x0": 113,
+    "y0": 119,
+    "x1": 1138,
+    "y1": 1133
+  },
+  "exteriorPixels": 592893,
+  "outputSize": {
+    "width": 1024,
+    "height": 1024
+  }
+}

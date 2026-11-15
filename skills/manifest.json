@@ -1,0 +1,134 @@
+[
+  {
+    "id": "frontend-design",
+    "title": "前端设计",
+    "description": "打造有辨识度、可用且经过验证的界面",
+    "category": "设计",
+    "author": "Anthropic",
+    "license": "Apache-2.0",
+    "revision": "1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064",
+    "sourceUrl": "https://github.com/anthropics/skills/blob/1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064/skills/frontend-design/SKILL.md",
+    "adapted": true,
+    "permissions": [
+      "模型指令",
+      "不含可执行脚本",
+      "不增加工具权限"
+    ],
+    "sha256": "df6e1f3b551682314c0b845edfeaa15fbd8539ce717a82fb3c4177c3c4cd9139",
+    "licenseSha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "upstreamSha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+  },
+  {
+    "id": "systematic-debugging",
+    "title": "系统化调试",
+    "description": "先定位根因，再以最小改动修复问题",
+    "category": "工程",
+    "author": "obra / Jesse Vincent",
+    "license": "MIT",
+    "revision": "22f0b463e7a5e579904dd6211a520321035526f7",
+    "sourceUrl": "https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/skills/systematic-debugging/SKILL.md",
+    "adapted": true,
+    "permissions": [
+      "模型指令",
+      "不含可执行脚本",
+      "不增加工具权限"
+    ],
+    "sha256": "50ebd5eea99a3812c515db45d455267d092df8c3c09b8dfa544b79989831fc93",
+    "licenseSha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+    "upstreamSha256": "51c6435d98c83c42c96ba7c35725a0b2c376cd487fb1a4e6bd0ddbe7e33ef202"
+  },
+  {
+    "id": "test-driven-development",
+    "title": "测试驱动开发",
+    "description": "用可观察的红—绿—重构循环实现功能",
+    "category": "工程",
+    "author": "obra / Jesse Vincent",
+    "license": "MIT",
+    "revision": "22f0b463e7a5e579904dd6211a520321035526f7",
+    "sourceUrl": "https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/skills/test-driven-development/SKILL.md",
+    "adapted": true,
+    "permissions": [
+      "模型指令",
+      "不含可执行脚本",
+      "不增加工具权限"
+    ],
+    "sha256": "d7921a448ffac3a681c11ddb09e553f88a32449bbc44b7a24342150d75d6a8a4",
+    "licenseSha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+    "upstreamSha256": "64b03fce4aee5a97a93160cea8111f3ba13a17b7c001db4bd5836d67fd10705d"
+  },
+  {
+    "id": "writing-plans",
+    "title": "任务规划",
+    "description": "把需求拆成具体文件、步骤和验收检查",
+    "category": "规划",
+    "author": "obra / Jesse Vincent",
+    "license": "MIT",
+    "revision": "22f0b463e7a5e579904dd6211a520321035526f7",
+    "sourceUrl": "https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/skills/writing-plans/SKILL.md",
+    "adapted": true,
+    "permissions": [
+      "模型指令",
+      "不含可执行脚本",
+      "不增加工具权限"
+    ],
+    "sha256": "a2cb513718317eac898ba347592694321ff19fc1925016612c9e8970ce2b486d",
+    "licenseSha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+    "upstreamSha256": "a6c67c1900064347c2a329990dd3c555657c51c3ec53b259a08aa01a2c26139a"
+  },
+  {
+    "id": "verification-before-completion",
+    "title": "完成前验证",
+    "description": "以真实执行证据支持完成声明",
+    "category": "质量",
+    "author": "obra / Jesse Vincent",
+    "license": "MIT",
+    "revision": "22f0b463e7a5e579904dd6211a520321035526f7",
+    "sourceUrl": "https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/skills/verification-before-completion/SKILL.md",
+    "adapted": true,
+    "permissions": [
+      "模型指令",
+      "不含可执行脚本",
+      "不增加工具权限"
+    ],
+    "sha256": "246024fec520032c5e58ff0a4b3bf17c37ac2051517a07a0ac3665d485d7085d",
+    "licenseSha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+    "upstreamSha256": "2befe7fc55bcadaa3d97dd9e8efeb633d2561c0ebe74c5a8b17c4d9e7e4520b3"
+  },
+  {
+    "id": "brainstorming",
+    "title": "需求探索",
+    "description": "澄清目标，比较方案，避免做错方向",
+    "category": "规划",
+    "author": "obra / Jesse Vincent",
+    "license": "MIT",
+    "revision": "22f0b463e7a5e579904dd6211a520321035526f7",
+    "sourceUrl": "https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/skills/brainstorming/SKILL.md",
+    "adapted": true,
+    "permissions": [
+      "模型指令",
+      "不含可执行脚本",
+      "不增加工具权限"
+    ],
+    "sha256": "658fa52380eba365b24f6c43ff92dd6e106b8f064dd94b583404148789aace36",
+    "licenseSha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+    "upstreamSha256": "2c9ca71f94886f9ca9f4aef055f7cafb3e1a9bdf3aeebf8f4cb547c69405d207"
+  },
+  {
+    "id": "code-review",
+    "title": "代码与安全审查",
+    "description": "检查正确性、安全边界、回归与测试盲区",
+    "category": "质量",
+    "author": "Tombuddy",
+    "license": "MIT",
+    "revision": "0.2.0",
+    "sourceUrl": "tombuddy://built-in/code-review",
+    "adapted": false,
+    "permissions": [
+      "模型指令",
+      "不含可执行脚本",
+      "不增加工具权限"
+    ],
+    "sha256": "a14109dd290ebc852ed260a0fd21f42fb24588bff5bfcd7761e2bfcf99261381",
+    "licenseSha256": "c481238b48aeeed28f5dc6ab1f303539c55c90839e6bacf995fe5fcb57339058"
+  }
+]

@@ -1,0 +1,115 @@
+# Tombuddy implementation checkpoint
+
+## Current release 0.6.1 — supplied T/orbit/star logo — DELIVERED
+Latest user supplied PNG supersedes all solar icon designs. `build/brand-master.png` byte-exact input SHA256 `d4c33c285a714311e47ac1814862e0e88c56f1adb60be03a1dde3f63f8cadf65`; original in sibling IELTS universe project untouched. Native generation clears only border-connected near-black exterior, preserves interior dark pixels/gradients, normalizes macOS padding; local embedded SVG/1024 PNG/iconset/ICNS. 55/55 core tests, audit 0, final icon/build/package plus ALL EIGHT packaged AND installed suites passed. Homepage pet/permissions/providers/data unchanged. Final two real-profile starts preserve original 1 provider/2 sessions/decryptable key/all original fields; 114 text files/0 credential matches/no model calls/guard unchanged. Independent ZIP boot verifies 7 skills/Full/pet/no calls and binary/asar/ICNS equality. Installed normal app reopened PID 75318; actual original-profile sidebar T logo and pet visually checked, private screenshot only `/tmp/tombuddy-061-genuine-normal.png`. Read `LOGO-0.6.1.md`.
+
+Private state `~/Library/Application Support/tombuddy/state.before-0.6.1-1794746175.json` 0600; prior final app `release/backups/Tombuddy-0.6.0-before-0.6.1-1794746175.app`. Final ZIP `release/Tombuddy-0.6.1-mac-arm64.zip` SHA256 `b46bd65e9fdd7287fe1e9722532283c58e6595637135646c3df00b72e1e93ef8`; asar `3eeb5271eb26895f55e3f1f74f6764d1f0904b2459ab05868cd9096e3f1553d8`. `artifacts/SHA256SUMS-0.6.1.txt`, `061-{runtime-results,pet-results,installed-startup,archive-startup,native-logo}.json`; logs `/tmp/tombuddy-061-*.log`. External source PNG hash rechecked unchanged. No fresh paid tests; unsigned arm64 remains.
+
+Pending Agent request: analyzed existing code and proposed minimal independent backend/behavior/permissions/approval/error/eval changes to user, but latest logo interrupted before any Agent runtime implementation. Public model/runtime metadata only under `/tmp`; no new executable/model installed/run, no fresh cloud/paid calls. Resume from `LOGO-0.6.1.md` pending section; do not claim those changes implemented or real completion/false-refusal rates evaluated.
+
+## Previous release 0.6.0 — animated landing companion / historical white-on-orange icon
+Latest clarification supersedes all prior icon palettes: WHITE twelve-ray sun (#ffffff) on TERRACOTTA tile (#c15f3c). Code folder landing uses independent original pixel companion, not animated logo. Implemented blink/bob/walk/look/greeting/sleep Z/pointer and keyboard wake; reduced-motion uses bounded one-shot state timers, no continuous RAF; normal sleep also stops JS frames; hidden/minimized/offscreen pause, unmount cleanup. macOS actual hide did not reliably change document visibility; fixed minimal boolean-only native visibility IPC, real hide/show now passes. No model requests/tasks from pet, no paid probes/guard changes, native reference images only `/tmp`, unknown private timing/seed parity not claimed. Read `PET-0.6.md` first.
+
+`npm test` 54/54; audit 0; icon/pack pass; ALL EIGHT packaged suites PASS (`/tmp/tombuddy-06-{core,audit,pack,desktop}.log`). Pet evidence `artifacts/06-pet-results.json` plus real differing frames/walk/dark/sleep/narrow screenshots; time-controlled sleep clearly labeled Playwright clock. Tests cover pointer eyes, appearance switch, real hide/show, click/Enter/Space, reduced motion, three Chat/Code cleanup cycles, card bounds and restart. Existing seven suites retain all workflows.
+
+Original 0.5.1 retained at `release/backups/Tombuddy-0.5.1-before-0.6-1794740556.app`, private state `~/Library/Application Support/tombuddy/state.before-0.6-1794740556.json` 0600. Extra ordinary native launch caught RAF boundary (sleep clock could stop before committing asleep paint); fixed and strengthened stepped-frame/off-cadence-key regression, rebuilt and repeated ALL EIGHT packaged AND installed suites successfully. Pre-final app preserved at `release/backups/Tombuddy-0.6-pre-final-1794741085.app`, second private state `state.before-0.6-final-1794741085.json`. Two final actual-profile starts: 1 provider/2 sessions/decryptable key/all original fields unchanged, 107 text files/0 key matches/no calls/paid guard unchanged. Independent ZIP boot verifies 7 skills/Full/animated pet/zero calls plus executable/asar/native ICNS equality. Normal installed app reopened without debug args, PID 72310; actual 34-second idle shows closed eyes and Z, real native pointer click wakes/jumps. Genuine images only `/tmp/tombuddy-06-genuine-final-{sleep,wake}.png`; metadata `artifacts/06-native-acceptance.json`. Read `PET-0.6.md` for final finding and acceptance. No ongoing background agent work claimed.
+
+Final ZIP `release/Tombuddy-0.6.0-mac-arm64.zip` SHA256 `c3dc37b6beb956f93c6f4b394fc7085167cd0634c76b73937b5f05f140091235`; asar `8b29d4983f266b86f9edffc764cb8a74136daa21476f563b86d97c4d880ddd7b`; ICNS `79e731ddcbf7dec20d5552e1db51769131ae25543f3f973a2389bdd85f829143`. `artifacts/SHA256SUMS-0.6.txt`, `06-{pet-results,runtime-results,installed-startup,archive-startup,native-acceptance}.json`. Logs `/tmp/tombuddy-06-*.log`. Installed and final archive contain the corrected sleep paint, not initial candidate. macOS arm64 unsigned/unnotarized; official private timing/random seeds/execution engine parity not claimed.
+
+## Previous release: 0.5.1 — Claude-like palette, twelve-ray shape unchanged
+Latest user clarification: keep sun shape but use Claude Code color tone. Warm ivory tile (#faf9f5) and terracotta sun (#c15f3c), no blue; shared SVG/PNG/Dock/native ICNS/shell/welcome/settings updated. No workflow, permission or data changes. Read `ICON-0.5.1.md` first.
+
+Final 50/50 core tests, audit 0, rebuilt icons/package, ALL SEVEN packaged AND installed suites PASS. Actual bundle raster colors (±1/255 RGB color-conversion rounding, exact alpha), twelve rays, complete 1024px image and ICNS/shell checks retained. Two genuine-profile restarts preserve original 1 provider/2 sessions/decryptable key/all original message/tool/wire/usage/trace; 96 text files scanned/0 real key matches, zero API calls, paid marker unchanged. Evidence `artifacts/051-{desktop-results,installed-startup,archive-startup}.json`, `051-warm-sun.png`.
+
+Private state `~/Library/Application Support/tombuddy/state.before-0.5.1-1794736389.json` (0600); prior blue app `release/backups/Tombuddy-0.5.0-blue-before-0.5.1-1794736389.app`. Final installed `~/Applications/Tombuddy.app` 0.5.1 reopened normally, PID 68327 at delivery. Final ZIP independently extracted/booted; binary/asar/native icon equal installed, 7 skills/default Full/no model calls. `release/Tombuddy-0.5.1-mac-arm64.zip`; ZIP SHA256 `3d8a20acd78d11190bcf34e3d0054dcadd9fde58f2e140beb8b15f2b09c57254`; asar `b16118a1a3aa27bb40a33cf198ef23a3153ff8c7276cf8fac0981de3f33a0418`; `artifacts/SHA256SUMS-0.5.1.txt`. Logs `/tmp/tombuddy-051-*.log`. No hidden ongoing work or new feature-parity claims.
+
+## Previous release: 0.5.0 — dynamic interactions + requested twelve-ray sun icon (historical)
+Read `WORKFLOW-0.5.md` first. Latest user request replaces icon with a blue/white twelve-ray sun resembling 青天白日, retaining Tombuddy name. Original local SVG geometry, 1024px PNG, all native ICNS sizes; shared shell/welcome/settings mark and explicit live Dock icon. `npm run pack` generates icons; actual bundled pixel/alpha/ray/ICNS/loaded-image tests verify complete unclipped icon, not just source. `artifacts/05-blue-white-sun.png`.
+
+Replaced aggregated activity with chronological reasoning/text/tool transcript, genuine live bounded stdout/stderr and real line-numbered before/after file previews, complete-file disclosure for Manual review, inline approval/reveal/focus, stable user-owned collapses, actual runtime phase/elapsed, stream cursor, reduced-motion, user-intent scroll and latest control. Drafts remain editable but not autoqueued/steered. Structured errors/details/explicit continue; no automatic retry. Partial signed tool-batch checkpoints keep confirmed writes, uncertain stopped commands and unstarted calls distinct; genuine process-group stop and restart/manual continuation tested. Nonzero exits/timeouts/truncation are not successes. Main progress is throttled to 80ms and renderer updates coalesced per frame with semantic/shutdown drains.
+
+**Final 50/50 core tests, npm audit 0, final pack, ALL SEVEN desktop suites PASS on packaged AND installed final bytes.** New dynamic suite uses exactly 8 explicitly synthetic loopback requests plus genuine isolated files/shell/clipboard/cancellation/storage/restart. Existing all six suites still pass. Evidence `artifacts/05-desktop-results.json`, `05-*.png`; logs `/tmp/tombuddy-05-{core,audit,icon,pack,desktop,installed-desktop,installed-profile}.log`.
+
+Safe normal quit, private backup `~/Library/Application Support/tombuddy/state.before-0.5-1794735377.json` (0600), old 0.4 app `release/backups/Tombuddy-0.4.0-before-0.5-1794735377.app`. Installed `/Users/a1/Applications/Tombuddy.app` 0.5.0 reopened normally, PID 67056 at delivery. TWO genuine-profile starts preserve original 1 provider/2 sessions, decryptable key and all message/reasoning/tool/trace/usage/wire evidence; 91 source/evidence text files scanned, zero credential matches, no model calls, paid marker unchanged. `artifacts/05-installed-startup.json`.
+
+Independent final archive extraction/packaged boot verifies binary/asar/native ICNS match installed, seven skills/default Full/zero API calls/no dev resources; `artifacts/05-archive-startup.json`. Final `release/Tombuddy-0.5.0-mac-arm64.zip`; ZIP SHA256 `37d02d9f3d430affcdd09a03042ed686b9f3a4e1b472555c7a2dddccce7f4846`, asar `0b17bd8bf1070d9c8c3e855c9e678fa71fbc5627d25fc7d14a7c52a511bd9f00`, native icon `1f7041b2cfa6b35a19e266545ada4984de42468b395f8713f79b4722f7cad499`; `artifacts/SHA256SUMS-0.5.txt`.
+
+Reference existing failed Code session actually inspected without submitting/retrying/checking connection. Gateway error still prevents observing successful official runtime transitions. This is evidence-driven reconstruction, NOT verified 100% official dynamic/private-engine parity. Earlier SSH/cloud/MCP/worktree/subagent/PTY/media/compaction gaps remain. App unsigned/unnotarized; Full is current-user access, not root/sandbox. No hidden ongoing work.
+
+## Previous release: 0.4.0 — installed-reference UI / real local panels (historical)
+Read `WORKFLOW-0.4.md` first. Actually opened native `/Applications/Claude.app` 5.11492.5 and inspected Code/model menu/accessibility geometry; no prompt/retry/connection check or config/history mutation. Private reference captures remain in `/tmp`, never in repository/release.
+
+Reconstructed 200px sidebar/44px header, Chat/Code, grouped/collapsible project sessions, rename/export/delete, centered folder picker, bottom growing composer with environment/folder/model/Effort/permission/usage toolbar. Code starts by default and restores last-selected folder. Added genuine nested read-only files, nonmutating Git HEAD/status diff, explicit-user terminal command/stop (30 seconds, no fake sandbox, mutually exclusive with model runs), fixed shared right rail without composer occlusion, native UTF-8 text/code attachments with chips/limits/no upload until send, command palette and keyboard/focus-managed menus. Existing Full/Manual/strict Plan, unlimited application tool rounds, reasoning, seven licensed skills and recovery protections preserved.
+
+**Final 44/44 core tests; audit 0 vulnerabilities; pack; ALL SIX desktop suites PASS for final packaged AND installed bytes.** New reference suite verifies native geometry, actual files/Git/terminal/process cancellation, text attachments through tool rounds/restart, last-selected folder/session persistence, model->Effort, commands, Chat/Code and 900px layout; exactly 2 synthetic loopback requests, no paid/external requests. Evidence `artifacts/04-desktop-results.json`, `04-*.png`.
+
+Safe normal quit before backup/install. Original private state `~/Library/Application Support/tombuddy/state.before-0.4-1794731187.json`; extra `state.before-0.4-final-1794731431.json` (0600); old app `release/backups/Tombuddy-0.3.1-before-0.4-1794731187.app`. Final installed `/Users/a1/Applications/Tombuddy.app` 0.4.0 reopened normally, PID 63315 at delivery. Two actual default-profile restarts preserve 1 provider, 2 sessions, decryptable key and original content/reasoning/tools/trace/usage/wire; zero model requests, 77 source/evidence text files scanned with zero credential matches; paid marker unchanged. `artifacts/04-installed-startup.json`.
+
+Final ZIP independently extracted/booted packaged, 7 skills/default Full/no dev resources/model calls, binary/asar matching installed. `artifacts/04-archive-startup.json`. Archive `release/Tombuddy-0.4.0-mac-arm64.zip`; SHA256 `879f6991966cfe39ca69e77205a3040d6d0e87b7e13f06c6918d4c6b11698c1f`; asar `0c7cad2595f13e7f10805f27675a1f46bf4f3cb9c13676e24dd8ba3589e9eb55`; `artifacts/SHA256SUMS-0.4.txt`. Latest logs `/tmp/tombuddy-04-{core,audit,pack,desktop,installed-desktop,installed-profile}.log`.
+
+Scope is observed UI/core local workflow, **not** complete official feature/private-engine/pixel parity. SSH/cloud/worktrees/MCP/plugins/subagents/full PTY/media/context compaction remain unimplemented, not disguised by fake working controls. Reference native gateway error prevents successful official task-running-state comparison; no paid retry authorized. Unsigned/unnotarized macOS arm64 remains. No hidden ongoing work.
+
+## Previous release: 0.3.1 (historical)
+Read `WORKFLOW-0.3.1.md` first. User explicitly superseded mandatory per-operation approvals and the 12-round limit: new chats now default to real Full Access (no write/shell approval); Manual remains available, Plan remains enforced read-only with explicit plan review. Tool execution has no fixed round ceiling; no application brand/task-category filter added. Current-user shell is NOT sandboxed and may affect project-external files/network/costs; this does not confer root or bypass provider/OS controls. Existing recorded Manual sessions preserve their mode and can be switched to Full.
+
+Final checks: 39/39 core tests; npm audit 0 vulnerabilities; all FIVE desktop suites pass against final packaged AND installed app. Actual 16 signed tool rounds finish without manual continuation; restart preserves/replays all results without duplicate tools. New Full suite: actual write/shell, zero approval events, Plan denial/review -> Full, restart/default and actual process-group stop. Final default profile survives TWO installed startups with 1 original provider, 2 sessions, unchanged message/tool/wire and decryptable key, zero model requests, 62 text files scanned/0 key matches. Paid-test marker unchanged. Evidence `031-{desktop-results,installed-startup,archive-startup}.json`, updated recovery suite; logs `/tmp/tombuddy-031-*.log`.
+
+Installed and opened `/Users/a1/Applications/Tombuddy.app` 0.3.1 (PID 59979 at delivery). Private backup `~/Library/Application Support/tombuddy/state.before-0.3.1-1794727971.json` (0600); old 0.3 app under `release/backups/Tombuddy-0.3.0-before-0.3.1-1794727971.app`. Final ZIP independently extracted/booted, installed/build/extracted binary and asar match. `release/Tombuddy-0.3.1-mac-arm64.zip`, `artifacts/SHA256SUMS-0.3.1.txt`. No fresh paid external testing; no claim of unlimited context, universal capability or private Claude internals. Complete within documented scope.
+
+## Previous release: 0.3.0 (historical)
+Read `WORKFLOW-0.3.md` for the final checkpoint and `FIX-CONNECTION-0.2.1.md` for the confirmed apparent-disconnect diagnosis. The unpublished 0.2.1 fixes are included in 0.3.0: resumable output/tool-budget pauses, genuine transport/error classification, configuration/selection persistence and shutdown flushing. Added fixed task rail, explicit plan approval -> individually approved execution, model-capability effort sliders and model/session scope, real thinking controls, Normal/Thinking/Verbose and public Claude-style commands/shortcuts. No claim to private Claude internals or complete feature/pixel parity; no security bypass/Auto classifier.
+
+35 core tests, 0 audit vulnerabilities, ALL FOUR desktop suites pass against packaged AND installed app. Original default profile separately survived TWO real installed-app restarts: 1 genuine DeepSeek provider, 2 original sessions, encrypted key decrypts, original content/tools/wire unchanged, 2 legacy failures recovered as pauses. 54 project text files scanned inside Electron for actual credential: 0 matches. No additional external model requests; original one-live-test guard unchanged.
+
+Installed and opened normally: `/Users/a1/Applications/Tombuddy.app` (0.3.0). Archive `release/Tombuddy-0.3.0-mac-arm64.zip` independently extracted and booted without development resources; `artifacts/SHA256SUMS-0.3.txt` and `03-*.json/png` contain evidence. Prior 0.2 app retained under `release/backups/Tombuddy-0.2.0-before-0.3-1794726155.app`; private original state backup stays outside repo at userData/state.before-0.3-1794726155.json (0600). Historical 0.1/0.2 notes below are retained. Do not rerun the real import/probe script or delete its marker without fresh user authorization.
+
+## Scope / decisions
+- New empty project; macOS arm64 available. Build Electron + React + TypeScript, packaged offline renderer.
+- Original Tombuddy branding; Claude-inspired warm desktop UI, not an official clone. No claim to private chain of thought. Only expose provider-returned reasoning and actual tool events.
+- Native OpenAI-compatible, Anthropic and Gemini transports. Keys encrypted using Electron safeStorage; renderer never receives saved keys.
+- Project read/list tools scoped to canonical workspace. Full Access (default since 0.3.1) executes writes/shell directly; Manual requires individual approval; Plan blocks both. Shell is inherently not sandboxed and must be labeled.
+- Local persistent sessions and preferences. No telemetry, no credential-dependent fake data.
+
+## Acceptance plan
+1. Build/typecheck and automated provider/tool tests.
+2. Exercise renderer in browser: onboarding/settings/chat/history/projects/export/theme.
+3. Build actual macOS .app, launch without Vite, inspect renderer and run app-level workflow via Electron debugging. Test restart persistence.
+4. Real external model requests need user API credentials; explicitly disclose if unavailable.
+
+## Commands
+- npm install
+- npm run build
+- npm test
+- npm run pack
+
+## Status
+- React/TypeScript UI implemented: warm Claude-inspired independent branding, chat/code modes, searchable persistent sessions, project sidebar, markdown/code copying/export, light/dark themes, API settings, tool trace and approval overlays.
+- Electron 45.3.2 / Vite 8.3.8; key encryption and native Anthropic/OpenAI/Gemini streaming implemented. 6 core tests passing. Production dependencies audit clean.
+- Packaged macOS arm64 app generated successfully with original icon. Vite server stopped before packaged acceptance runs.
+- Packaged-app tests use isolated /tmp profiles and an explicitly synthetic local HTTP fixture; native picker/save dialogs stubbed, actual filesystem and app IPC exercised.
+- First desktop run identified missing paragraph separation after tool rounds; fixed.
+- Second run completed chat, encrypted key, export, file read/write approval, command refusal, stop, 401 error and dark mode; identified project selection retaining old chat context. Fixed by starting fresh project conversation and blocking project switches during a live run.
+- Current command running: npm install --cache /tmp/tombuddy-npm-cache && npm run pack && npm run test:desktop (logs /tmp/tombuddy-audit-fix.log, /tmp/tombuddy-pack.log, /tmp/tombuddy-desktop-test.log).
+- Scoped build-tool minimatch overrides to 11.0.8 to address moderate advisory; pack + audit need recheck.
+- No credentials provided; real external model requests remain unverified. macOS signing/notarization unavailable; local app unsigned.
+
+## Final acceptance checkpoint (supersedes intermediate status above)
+- `npm test`: 8/8 pass, including corruption recovery backups, symlink credential protection, streaming protocol adapters and process-group cancellation.
+- `npm audit`: 0 vulnerabilities (including dev dependencies). Scoped minimatch overrides verified by successful packaging.
+- `npm run pack`: successful final Electron 45.3.2 macOS arm64 package. Build log `/tmp/tombuddy-pack-final.log`.
+- `npm run test:desktop`: passes against final .app, then again with `TOMBUDDY_TEST_EXECUTABLE="$HOME/Applications/Tombuddy.app/Contents/MacOS/Tombuddy"` against installed copy. Covers actual approved command execution as well as command refusal, actual file writes, file panel, key decrypt after restart, stream stop, error visibility and persisted themes/chat.
+- Fixed auto-scroll so reading earlier messages is not forcibly interrupted by every stream event. Saved context includes prior completed tool calls/results.
+- Damaged state JSON is copied to a private `.recovery-<timestamp>.json` before empty-state recovery; load permission failures do not silently overwrite user data.
+- Installed at `/Users/a1/Applications/Tombuddy.app`; `app.asar` byte-for-byte matches packaged artifact (`cmp` passed).
+- Independently launched installed app with default profile (not test profile), confirmed `app.isPackaged=true`, version 0.1.0, renderer loaded from installed app.asar file://, 0 providers and 0 sessions (no fixture pollution).
+- Real userData directory: `/Users/a1/Library/Application Support/tombuddy`.
+- Final app opened normally with `open "$HOME/Applications/Tombuddy.app"`; process confirmed running. No development server required or running.
+- Archive: `release/Tombuddy-0.1.0-mac-arm64.zip` (~119 MB). SHA256 `0c6c423942a6032cff19c2b02dc0ff1751f76b344f18f591b83846c5a06e3669`.
+- Final app.asar SHA256 `94cb5fc2a780f20a09a750f5feb9ef7303d77ccc1b27523ca3a8ee8c075bcf61`.
+- Evidence: `artifacts/desktop-results.json`, `artifacts/desktop-*.png`, `artifacts/installed-home.png`, `artifacts/SHA256SUMS.txt`.
+- README.md documents use, protocols, security boundaries, unsigned build and missing parity features.
+
+## Remaining blockers / next step
+- User must enter their own API key in the desktop settings, NOT in chat. No real vendor credentials were available; live-service authentication, account model access and billing remain unverified. All acceptance model responses came from clearly marked local fixtures; native file dialogs were stubbed in automation.
+- No Apple Developer signing/notarization; no Windows/Linux/Intel artifact verified.
+- This is v0.1 core workflow delivery, not total Claude Desktop/Code parity. MCP, plugin/subagent ecosystem, attachments, embedded interactive terminal, context compaction, worktrees and update service are not implemented. Never claim private Claude chain-of-thought or full 1:1 parity.

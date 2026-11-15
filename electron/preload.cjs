@@ -1,0 +1,25 @@
+const {contextBridge,ipcRenderer}=require('electron');
+contextBridge.exposeInMainWorld('tombuddy',{
+  windowVisible:()=>ipcRenderer.invoke('window:visible'),
+  onVisibility:callback=>{const handler=(_,visible)=>callback(visible===true);ipcRenderer.on('window:visibility',handler);return()=>ipcRenderer.removeListener('window:visibility',handler);},
+  load:()=>ipcRenderer.invoke('state:load'),
+  save:data=>ipcRenderer.invoke('state:save',data),
+  saveProvider:p=>ipcRenderer.invoke('provider:save',p),
+  deleteProvider:id=>ipcRenderer.invoke('provider:delete',id),
+  selectProvider:id=>ipcRenderer.invoke('provider:select',id),
+  testProvider:id=>ipcRenderer.invoke('provider:test',id),
+  chooseProject:()=>ipcRenderer.invoke('project:choose'),
+  chooseAttachments:()=>ipcRenderer.invoke('attachments:choose'),
+  files:root=>ipcRenderer.invoke('project:files',root),
+  entries:(root,relative)=>ipcRenderer.invoke('project:entries',root,relative),
+  readFile:(root,relative)=>ipcRenderer.invoke('project:read',root,relative),
+  changes:root=>ipcRenderer.invoke('project:changes',root),
+  terminal:request=>ipcRenderer.invoke('terminal:run',request),
+  skills:()=>ipcRenderer.invoke('skills:list'),
+  skillDetail:id=>ipcRenderer.invoke('skills:detail',id),
+  export:text=>ipcRenderer.invoke('export',text),
+  start:req=>ipcRenderer.invoke('agent:start',req),
+  stop:id=>ipcRenderer.invoke('agent:stop',id),
+  approve:(id,value)=>ipcRenderer.invoke('agent:approve',id,value),
+  onEvent:callback=>{const handler=(_,event)=>callback(event);ipcRenderer.on('agent:event',handler);return ()=>ipcRenderer.removeListener('agent:event',handler);}
+});

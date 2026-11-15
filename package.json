@@ -1,0 +1,67 @@
+{
+  "name": "tombuddy",
+  "type": "module",
+  "version": "0.6.1",
+  "description": "Tombuddy — 多模型桌面编码助手",
+  "main": "electron/main.cjs",
+  "author": "Tombuddy",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "desktop": "electron .",
+    "build": "tsc && vite build",
+    "start": "npm run build && electron .",
+    "icon": "node scripts/icon.cjs && node scripts/build-icon.cjs",
+    "pack": "npm run icon && npm run build && electron-builder --mac dir",
+    "test": "node --test tests/*.test.cjs",
+    "test:desktop": "node tests/desktop.cjs && node tests/desktop-02.cjs && node tests/desktop-021.cjs && node tests/desktop-03.cjs && node tests/desktop-031.cjs && node tests/desktop-04.cjs && node tests/desktop-05.cjs && node tests/desktop-06.cjs",
+    "test:desktop:02": "node tests/desktop-02.cjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^9.0.3",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "electron": "^45.3.2",
+    "electron-builder": "^26.0.0",
+    "playwright-core": "^1.65.1",
+    "typescript": "^5.7.2",
+    "vite": "^8.3.8"
+  },
+  "overrides": {
+    "app-builder-lib": {
+      "minimatch": "11.0.8"
+    },
+    "@electron/universal": {
+      "minimatch": "11.0.8"
+    }
+  },
+  "build": {
+    "appId": "com.tombuddy.desktop",
+    "productName": "Tombuddy",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "skills/**/*",
+      "THIRD-PARTY-NOTICES.md",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "build/icon.icns",
+      "target": [
+        "dir"
+      ],
+      "identity": null
+    }
+  }
+}
