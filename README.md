@@ -2,6 +2,45 @@
 
 本地优先、多模型的 macOS 桌面编码助手。提供 Claude Code 风格的任务工作流、真实推理参数、执行过程和精选内置技能。**独立 Tombuddy 品牌，不是 Anthropic 官方应用，不声称复制 Claude 私有系统、隐藏思维链或保证模型能力一比一相同。**
 
+## 界面预览
+
+<p align="center">
+  <img src="public/icon.png" width="144" alt="Tombuddy 图标">
+</p>
+
+| 深色主题主界面 | Plan 模式：先计划，后执行 |
+| --- | --- |
+| ![深色主题主界面：任务计划面板与结构化错误卡片](docs/images/main-dark.png) | ![Plan 模式：计划确认后逐次审批执行](docs/images/plan-approval.png) |
+| **按时间顺序的执行记录** | **Git 变更面板** |
+| ![执行记录：思考摘要、流式正文与工具卡片按事件顺序穿插](docs/images/transcript.png) | ![Git 变更面板：状态与差异](docs/images/git-changes.png) |
+| **内置技能库** | **本地终端** |
+| ![技能库：精选内置技能](docs/images/skills-library.png) | ![本地终端：命令实时输出](docs/images/local-terminal.png) |
+
+## 下载与安装
+
+### Windows（v0.6.1）
+
+到本仓库的 [Releases](https://github.com/Tomhao10225101490/Tombuddy/releases) 页面下载：
+
+- `Tombuddy-0.6.1-win-x64-portable.exe` — **Windows 免安装版**（约 109 MB，附 `SHA256SUMS.txt` 校验文件）
+
+**安装/使用方法（免安装版）：**
+
+1. 下载 `Tombuddy-0.6.1-win-x64-portable.exe`，建议放到一个固定文件夹（例如 `D:\Apps\Tombuddy\`），不要放在「下载」里随手删掉。
+2. 双击运行。若 Windows SmartScreen 弹出“Windows 已保护你的电脑”，点击 **“更多信息” → “仍要运行”**（本构建未购买代码签名证书，属正常提示）。
+3. 首次启动后，在设置里填入你自己的模型服务 API 密钥即可使用；想常驻的话，可右键 exe 选择「固定到任务栏」或发送快捷方式到桌面。
+4. 不用了直接删除 exe 即可；你的本地数据保存在本机用户数据目录下的 `state.json`，不会上传到任何服务器。
+
+**Windows 版说明：**
+
+- 与 macOS 版同一套源码；命令执行在 Windows 上走 `cmd.exe`，超时或停止时会终止整个进程树。
+- Git 面板调用系统 `git`，请先安装 [Git for Windows](https://git-scm.com/download/win)，否则 Git 面板会提示检查失败（不影响其他功能）。
+- 应用自带 Electron 运行时，无需另装 Node.js；仅支持 64 位 Windows 10/11。
+
+### macOS
+
+见下方「打开」一节（本机安装与项目构建产物）。源码运行：`npm install` 后 `npm run desktop`。
+
 ## 打开
 
 - 本机安装：`/Users/a1/Applications/Tombuddy.app`

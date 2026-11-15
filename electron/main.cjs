@@ -162,7 +162,7 @@ app.whenReady().then(async()=>{
   Menu.setApplicationMenu(Menu.buildFromTemplate([{label:'Tombuddy',submenu:[{role:'about'},{type:'separator'},{role:'hide'},{role:'quit'}]},{label:'编辑',submenu:[{role:'undo'},{role:'redo'},{type:'separator'},{role:'cut'},{role:'copy'},{role:'paste'},{role:'selectAll'}]},{label:'视图',submenu:[{role:'reload'},{role:'toggleDevTools'},{role:'resetZoom'},{role:'zoomIn'},{role:'zoomOut'},{role:'togglefullscreen'}]}]));
   function createWindow(){
     shutdownFlush=undefined;let closing=false;
-    win=new BrowserWindow({width:1398,height:820,minWidth:900,minHeight:640,title:'Tombuddy',titleBarStyle:'hiddenInset',trafficLightPosition:{x:12,y:16},backgroundColor:store.theme==='dark'?'#191919':'#faf9f5',webPreferences:{preload:path.join(__dirname,'preload.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true}});
+    win=new BrowserWindow({width:1398,height:820,minWidth:900,minHeight:640,title:'Tombuddy',icon:process.platform==='win32'?path.join(__dirname,'../dist/icon.png'):undefined,titleBarStyle:'hiddenInset',trafficLightPosition:{x:12,y:16},backgroundColor:store.theme==='dark'?'#191919':'#faf9f5',webPreferences:{preload:path.join(__dirname,'preload.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true}});
     for(const event of ['show','hide','minimize','restore'])win.on(event,()=>{if(!win.isDestroyed())win.webContents.send('window:visibility',win.isVisible()&&!win.isMinimized())});
     win.webContents.setWindowOpenHandler(({url})=>{if(/^https?:\/\//.test(url))shell.openExternal(url);return {action:'deny'};});
     win.webContents.on('will-navigate',(e,url)=>{if(url!==win.webContents.getURL())e.preventDefault();});

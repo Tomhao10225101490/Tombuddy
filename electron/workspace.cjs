@@ -1,6 +1,6 @@
 const fs=require('node:fs/promises');
 const path=require('node:path');
-const {spawn}=require('node:child_process');
+const {spawn,execFile}=require('node:child_process');
 const {StringDecoder}=require('node:string_decoder');
 async function resolveSafe(root,relative='.',write=false) {
   if(!root)throw new Error('请先选择项目目录');
@@ -40,12 +40,13 @@ async function executeTool(root,name,args,signal,onProgress,onOutcome){
     if(typeof args.command!=='string' || !args.command.trim())throw new Error('命令不能为空');
     return new Promise((resolve,reject)=>{
       if(signal?.aborted)return reject(new DOMException('已停止','AbortError'));
-      const env=Object.fromEntries(['PATH','HOME','TMPDIR','LANG','USER','SHELL'].filter(k=>process.env[k]).map(k=>[k,process.env[k]]));
-      const child=spawn('/bin/zsh',['-c',args.command],{cwd:root,detached:true,env,stdio:['ignore','pipe','pipe']});
+      const isWin=process.platform==='win32';
+      const env=Object.fromEntries((isWin?['PATH','Path','USERPROFILE','USERNAME','TEMP','TMP','SystemRoot','ComSpec','APPDATA','LOCALAPPDATA','HOME','LANG']:['PATH','HOME','TMPDIR','LANG','USER','SHELL']).filter(k=>process.env[k]).map(k=>[k,process.env[k]]));
+      const child=isWin?spawn(process.env.ComSpec||'cmd.exe',['/d','/s','/c',args.command],{cwd:root,env,stdio:['ignore','pipe','pipe'],windowsHide:true}):spawn('/bin/zsh',['-c',args.command],{cwd:root,detached:true,env,stdio:['ignore','pipe','pipe']});
       let output='',truncated=false,timedOut=false,progressTimer,lastSent=0,lastProgress='';
       const publish=()=>{clearTimeout(progressTimer);progressTimer=undefined;const text=output.slice(0,40000);if(text!==lastProgress){lastProgress=text;lastSent=Date.now();onProgress?.(text)}};
       const progress=()=>{if(!onProgress)return;if(Date.now()-lastSent>=80)publish();else if(!progressTimer)progressTimer=setTimeout(publish,80-(Date.now()-lastSent))};
-      const kill=()=>{try{process.kill(-child.pid,'SIGKILL')}catch{child.kill('SIGKILL')}};
+      const kill=isWin?()=>{try{execFile('taskkill',['/pid',String(child.pid),'/T','/F'],()=>{})}catch{try{child.kill('SIGKILL')}catch{}}}:()=>{try{process.kill(-child.pid,'SIGKILL')}catch{child.kill('SIGKILL')}};
       const timer=setTimeout(()=>{timedOut=true;kill()},30000);
       const append=text=>{if(truncated)return;output+=text;if(Buffer.byteLength(output)>200000){truncated=true;output=output.slice(0,40000);kill()}progress()};
       for(const stream of [child.stdout,child.stderr]){const decoder=new StringDecoder('utf8');stream.on('data',data=>append(decoder.write(data)));stream.on('end',()=>{const tail=decoder.end();if(tail)append(tail)});}signal?.addEventListener('abort',kill,{once:true});

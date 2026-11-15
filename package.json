@@ -62,6 +62,33 @@
         "dir"
       ],
       "identity": null
+    },
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "Tombuddy-${version}-win-x64-setup.${ext}",
+      "shortcutName": "Tombuddy"
+    },
+    "portable": {
+      "artifactName": "Tombuddy-${version}-win-x64-portable.${ext}"
     }
   }
 }
