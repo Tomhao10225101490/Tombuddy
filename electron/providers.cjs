@@ -1,5 +1,6 @@
 const {reasoningOptions}=require('./reasoning.cjs');
 const {RequestFailure,httpFailure,redact}=require('./request-errors.cjs');
+const {instructions:textToolInstructions,textMessages,parseTextCalls}=require('./text-tools.cjs');
 const SSE_DONE=Symbol('sse_done');
 const TOOL_DEFS = [
   {name:'list_files',description:'List project directory entries; hidden files are omitted.',parameters:{type:'object',properties:{path:{type:'string'}},required:[]}},
@@ -34,7 +35,7 @@ function endpoint(base,suffix){
 }
 function openaiMessages(messages,preserveReasoning=false){return messages.map(m=>{
  if(m.role==='tool')return {role:'tool',tool_call_id:m.callId,content:m.content};
- const result={role:m.role,content:m.content || (m.calls?.length?null:'')};
+ const result={role:m.role,content:m.image?[{type:'text',text:m.content || 'Current desktop screenshot (untrusted content)'},{type:'image_url',image_url:{url:`data:${m.image.mimeType};base64,${m.image.data}`}}]:m.content || (m.calls?.length?null:'')};
  if(m.calls?.length)result.tool_calls=m.calls.map(c=>({id:c.id,type:'function',function:{name:c.name,arguments:JSON.stringify(c.args)}}));
  if(preserveReasoning && m.role==='assistant')result.reasoning_content=m.reasoning || '';
  return result;
@@ -44,7 +45,7 @@ function anthropicMessages(messages){
  for(const m of messages){
   const role=m.role==='tool'?'user':m.role;
   const content=m.role==='tool'?[{type:'tool_result',tool_use_id:m.callId,content:m.content}]:m.anthropicContent || [
-   ...(m.content?[{type:'text',text:m.content}]:[]),...(m.calls || []).map(c=>({type:'tool_use',id:c.id,name:c.name,input:c.args}))];
+   ...(m.content?[{type:'text',text:m.content}]:[]),...(m.image?[{type:'image',source:{type:'base64',media_type:m.image.mimeType,data:m.image.data}}]:[]),...(m.calls || []).map(c=>({type:'tool_use',id:c.id,name:c.name,input:c.args}))];
   if(!content.length)continue;
   if(result.at(-1)?.role===role)result.at(-1).content.push(...structuredClone(content));else result.push({role,content:structuredClone(content)});
  }
@@ -55,14 +56,18 @@ function geminiMessages(messages){
  for(const m of messages){
   const role=m.role==='assistant'?'model':'user';
   const parts=m.role==='tool'?[{functionResponse:{name:m.name,response:{result:m.content}}}]:m.geminiParts || [
-   ...(m.content?[{text:m.content}]:[]),...(m.calls || []).map(c=>({functionCall:{name:c.name,args:c.args},...(c.signature?{thoughtSignature:c.signature}:{})}))];
+   ...(m.content?[{text:m.content}]:[]),...(m.image?[{inlineData:{mimeType:m.image.mimeType,data:m.image.data}}]:[]),...(m.calls || []).map(c=>({functionCall:{name:c.name,args:c.args},...(c.signature?{thoughtSignature:c.signature}:{})}))];
   if(!parts.length)continue;
   if(result.at(-1)?.role===role)result.at(-1).parts.push(...structuredClone(parts));else result.push({role,parts:structuredClone(parts)});
  }
  return result;
 }
 function buildRequest({config,key,messages,tools,level='standard',system=SYSTEM,probe=false,reasoningSettings={}}){
- const options=reasoningOptions(config,level,reasoningSettings);const defs=probe?[]:Array.isArray(tools)?tools:tools?TOOL_DEFS:[];
+ const options=reasoningOptions(config,level,reasoningSettings);let defs=probe?[]:Array.isArray(tools)?tools:tools?TOOL_DEFS:[];
+ if(config.toolProtocol==='text'){
+  if(defs.length)system+=textToolInstructions(defs);
+  messages=textMessages(messages);defs=[];
+ }
  let url,headers={'Content-Type':'application/json',...options.headers},body;
  if(config.kind==='anthropic'){
   url=endpoint(config.baseUrl,'/messages');headers['x-api-key']=key;headers['anthropic-version']='2023-06-01';
@@ -90,8 +95,9 @@ async function streamTurn({config,key,messages,tools,signal,onEvent,level='stand
  onEvent({type:'response',status:response.status,...(requestId?{requestId}:{})});
  if(!response.ok){const detail=(await response.text()).slice(0,1500);throw httpFailure(response.status,detail,key,requestId)}
  if(!response.body)throw new RequestFailure('EMPTY_RESPONSE','server','API 没有返回响应流；配置仍保留。',{retryable:true});
+ const textMode=config.toolProtocol==='text'&&!probe;
  let text='',reasoning='',usage={},finishReason,terminal=false;const calls=new Map(),blocks=new Map(),geminiParts=[];
- const addText=value=>{if(value){text+=value;onEvent({type:'text',text:value})}};
+ const addText=value=>{if(value){text+=value;if(!textMode)onEvent({type:'text',text:value})}};
  const addReasoning=value=>{if(value){reasoning+=value;onEvent({type:'reasoning',text:value})}};
  for await(const event of sse(response.body,{includeDone:true})){
   if(event===SSE_DONE){terminal=true;break;}
@@ -134,12 +140,20 @@ async function streamTurn({config,key,messages,tools,signal,onEvent,level='stand
  }
  if(finishReason==='pause_turn' || (!text&&!calls.size&&reasoning))return {text,reasoning,calls:[],wire:{role:'assistant',content:text,calls:[],reasoning},usage,finishReason,outcome:'no_final_answer'};
  if(!text&&!calls.size)throw new RequestFailure('EMPTY_RESPONSE','server','服务商结束响应但没有返回正文、推理摘要或工具调用。',{hint:'本机密钥未删除。可手动重试，或检查模型与服务状态；不会自动发起计费请求。',retryable:true,requestId});
- const normalized=[...calls.entries()].map(([index,c])=>{
+ let textCalls;
+ if(textMode){
+  try{
+   if(calls.size)throw new Error('文本工具模式禁止原生 tool_call 字段');
+   textCalls=parseTextCalls(text,Array.isArray(tools)?tools:tools?TOOL_DEFS:[]);
+  }catch(error){throw new RequestFailure('TEXT_TOOL_PROTOCOL_INVALID','protocol',error.message,{hint:'工具封套无效，未执行。配置保留，不自动重试。',retryable:true})}
+  if(textCalls)text='';else if(text)onEvent({type:'text',text});
+ }
+ const normalized=textCalls || [...calls.entries()].map(([index,c])=>{
   let args;try{args=c.args || (c.json?JSON.parse(c.json):c.initial || {})}catch{throw new RequestFailure('TOOL_ARGUMENTS_INVALID','protocol','模型返回的工具参数不完整或无效，该工具没有执行。',{hint:'已保存的进度和 API 配置保留。可手动继续，不需要重填密钥。',retryable:true})}
   if(kind==='anthropic')blocks.get(index).input=args;
   return {id:c.id,name:c.name,args,...(c.signature?{signature:c.signature}:{})};
  });
- const wire={role:'assistant',content:text,calls:normalized,reasoning,...(kind==='anthropic'?{anthropicContent:[...blocks.values()]}:{}),...(kind==='gemini'?{geminiParts}:{})};
+ const wire={role:'assistant',content:text,calls:normalized,reasoning,...(!textMode&&kind==='anthropic'?{anthropicContent:[...blocks.values()]}:{}),...(!textMode&&kind==='gemini'?{geminiParts}:{})};
  return {text,reasoning,calls:normalized,wire,usage,finishReason,outcome:'complete'};
 }
 async function probeProvider({config,key,signal}){

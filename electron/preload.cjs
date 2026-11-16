@@ -1,5 +1,10 @@
 const {contextBridge,ipcRenderer}=require('electron');
 contextBridge.exposeInMainWorld('tombuddy',{
+  computerStatus:()=>ipcRenderer.invoke('computer:status'),
+  computerEnable:value=>ipcRenderer.invoke('computer:enable',value),
+  computerAccessibility:()=>ipcRenderer.invoke('computer:accessibility'),
+  computerSettings:kind=>ipcRenderer.invoke('computer:settings',kind),
+  onComputerDisabled:callback=>{const handler=()=>callback();ipcRenderer.on('computer:disabled',handler);return()=>ipcRenderer.removeListener('computer:disabled',handler);},
   windowVisible:()=>ipcRenderer.invoke('window:visible'),
   onVisibility:callback=>{const handler=(_,visible)=>callback(visible===true);ipcRenderer.on('window:visibility',handler);return()=>ipcRenderer.removeListener('window:visibility',handler);},
   load:()=>ipcRenderer.invoke('state:load'),

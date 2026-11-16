@@ -12,3 +12,6 @@ artifacts/
 
 # macOS
 .DS_Store
+
+# Compiled macOS computer-use helper (rebuild: npm run computer:build)
+electron/bin/

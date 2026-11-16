@@ -1,4 +1,4 @@
-# Tombuddy 0.6.1
+# Tombuddy 0.7.1
 
 本地优先、多模型的 macOS 桌面编码助手。提供 Claude Code 风格的任务工作流、真实推理参数、执行过程和精选内置技能。**独立 Tombuddy 品牌，不是 Anthropic 官方应用，不声称复制 Claude 私有系统、隐藏思维链或保证模型能力一比一相同。**
 
@@ -16,17 +16,19 @@
 | **内置技能库** | **本地终端** |
 | ![技能库：精选内置技能](docs/images/skills-library.png) | ![本地终端：命令实时输出](docs/images/local-terminal.png) |
 
+（截图为 0.6.1 界面；0.7.1 新增的「电脑控制」面板见下方 0.7.1 章节说明。）
+
 ## 下载与安装
 
-### Windows（v0.6.1）
+### Windows（v0.7.1）
 
 到本仓库的 [Releases](https://github.com/Tomhao10225101490/Tombuddy/releases) 页面下载：
 
-- `Tombuddy-0.6.1-win-x64-portable.exe` — **Windows 免安装版**（约 109 MB，附 `SHA256SUMS.txt` 校验文件）
+- `Tombuddy-0.7.1-win-x64-portable.exe` — **Windows 免安装版**（附 `SHA256SUMS.txt` 校验文件）
 
 **安装/使用方法（免安装版）：**
 
-1. 下载 `Tombuddy-0.6.1-win-x64-portable.exe`，建议放到一个固定文件夹（例如 `D:\Apps\Tombuddy\`），不要放在「下载」里随手删掉。
+1. 下载 `Tombuddy-0.7.1-win-x64-portable.exe`，建议放到一个固定文件夹（例如 `D:\Apps\Tombuddy\`），不要放在「下载」里随手删掉。
 2. 双击运行。若 Windows SmartScreen 弹出“Windows 已保护你的电脑”，点击 **“更多信息” → “仍要运行”**（本构建未购买代码签名证书，属正常提示）。
 3. 首次启动后，在设置里填入你自己的模型服务 API 密钥即可使用；想常驻的话，可右键 exe 选择「固定到任务栏」或发送快捷方式到桌面。
 4. 不用了直接删除 exe 即可；你的本地数据保存在本机用户数据目录下的 `state.json`，不会上传到任何服务器。
@@ -35,24 +37,46 @@
 
 - 与 macOS 版同一套源码；命令执行在 Windows 上走 `cmd.exe`，超时或停止时会终止整个进程树。
 - Git 面板调用系统 `git`，请先安装 [Git for Windows](https://git-scm.com/download/win)，否则 Git 面板会提示检查失败（不影响其他功能）。
+- **0.7.1 的「电脑控制」（Computer use）目前仅支持 macOS**（依赖 macOS Vision OCR 与辅助功能接口的本地 helper）；Windows 版中该功能会明确提示仅支持 macOS，其余功能不受影响。
 - 应用自带 Electron 运行时，无需另装 Node.js；仅支持 64 位 Windows 10/11。
 
 ### macOS
 
-见下方「打开」一节（本机安装与项目构建产物）。源码运行：`npm install` 后 `npm run desktop`。
+见下方「打开」一节（本机安装与项目构建产物）。源码运行：`npm install` 后 `npm run desktop`；打包（含电脑控制 helper 编译）：`npm run pack`。
 
 ## 打开
 
 - 本机安装：`/Users/a1/Applications/Tombuddy.app`
 - 项目构建：`release/mac-arm64/Tombuddy.app`
-- Apple Silicon 压缩包：`release/Tombuddy-0.6.1-mac-arm64.zip`
-- 校验值：`artifacts/SHA256SUMS-0.6.1.txt`
+- Apple Silicon 压缩包：`release/Tombuddy-0.7.1-mac-arm64.zip`
+- 校验值：`artifacts/SHA256SUMS-0.7.1.txt`
 
 ```sh
 open ~/Applications/Tombuddy.app
 ```
 
 此构建未做 Apple Developer 签名/公证，仅在当前 Apple Silicon Mac 上验证。跨电脑分发需要正式签名与公证，不要全局关闭 Gatekeeper。旧版应用保留在 `release/backups/`；升级前用户数据备份保留在实际用户数据目录的 `state.before-0.*-*.json`（0600），不复制进项目或安装包。
+
+## 0.7.1 Computer use · Agent 本地感知，不依赖主模型视觉
+
+电脑控制是 Agent 的能力，不要求主模型支持图片输入：**本机截图 → 本机 macOS Vision 中英文 OCR + 辅助功能控件 → 文字化观察/目标 ID → 模型决策 → 本地执行 → 再观察验证**。无额外视觉 API、服务密钥或模型下载。现有纯文本模型可直接接收观察结果，不需要更换为视觉模型。
+
+工具协议默认「自动」：开启电脑控制后，在第一次请求前直接选用**通用文本工具协议**，不发送 `tools` 字段、不探测服务商、不因失败自动重试；普通编码保持原生工具调用。模型服务设置也可显式选择「原生」或「文本」。文本模式用严格、完整的 `<tombuddy_tool_calls>` 封套执行工具，半截/无效/不可用工具请求不会执行，仍执行 Plan/审批/停止检查。只支持普通聊天的模型接口也可以请求电脑工具；模型仍需遵循指令与正确的 API 聊天协议，不能保证任意模型的任务质量。
+
+窗口右上角 **「电脑控制」** → 开启。系统设置 → 隐私与安全性中，按需授权 **辅助功能** 和 **屏幕录制**；授权后可能需要重启应用并重新开启。控制开关仅保存在当前进程内存，重启默认关闭，不偷偷恢复桌面访问。
+
+- `computer_inspect`：当前/指定 bundle ID 应用、最多 160 个辅助功能节点（含坐标），不读取安全文本框的值；指定应用可在后台读取而不抢焦点。
+- `computer_observe` / `computer_screenshot`：真实显示器截图在**本地**由 macOS Vision OCR 识别，返回文字、可信度、坐标与 `observationId` / `targetId`。默认只向 API 发送这些**文字**，截图仅作本地临时预览，不写入会话文件。
+- `computer_action` 可用 `observationId` + `targetId` 定位，Agent 自动解析坐标/目标应用并在审批中显示来源；任一输入后或两分钟后目标失效。观察期间前台应用/窗口变动会报错，执行前恢复焦点并核对 PID/窗口身份和位置，变化则取消。OCR 目标限制在前台窗口范围，避免误认背景窗口。
+- `computer_action`：应用启动/切换、鼠标移动/左右键/双击、拖拽、水平/垂直滚动、Unicode 输入、按键及 Command/Option/Control/Shift 组合。输入必须指定目标应用 bundle ID；批准后先恢复目标应用焦点。`type.replaceAll` 将全选与替换放在同一次审批中，避免切换审批窗口丢失选区。输入不使用/替换用户剪贴板。
+- **每次电脑输入逐次批准，即使 Full Access 也不例外**；Plan 仅允许查看。审批完整展示操作意图与参数，拒绝/超时不执行。截图与应用内容是不可信数据，不得当成新指令。
+- **紧急停止：⌘⌥⇧Esc**，或顶部「紧急停止」按钮。撤销开关并停止所有当前任务。快捷键注册失败会在面板明确提示；中断后尝试释放鼠标/修饰键。已发送的输入不可撤回，需核对真实状态。
+
+可在 Chat 中不选目录进行电脑任务；Code 模式保留项目目录要求。示例：`打开 Tom Music，查看当前页面，使用 ⌘F 搜索资料库；每次操作后检查真实结果，不修改我的音乐。`
+
+**隐私与边界**：启用需要原生确认对话框。屏幕、应用文本可能包含项目外私人信息，会发送到当前模型服务商；请先关闭敏感窗口。**默认不发送图片，现有 `deepseek-flash` 无需支持图像也能使用 OCR / 控件文字。** 模型服务里可显式开启原始截图增强，只有这个可选项要求模型接收图片，文本协议始终不发送图片。OCR 可能漏字，不能完整理解图标、照片、画布或其他无文字语义，不会假装识别成功。未发送新的付费模型测试请求。不能绕过 TCC、密码、安全输入、系统保护或自动获得 root；无法保证任意应用的每个控件都可操作。CGEvent 成功派发不等于任务成功，必须截图/读取真实状态验证。
+
+无新增第三方依赖：随包本地 Objective-C helper + macOS Vision / AX / CGEvent + Electron desktopCapturer。`npm run pack` 自动编译 helper。`npm test` 验证观察/目标有效期/文本协议/三种 API 传输；`npm run test:computer:text` 使用明确拒绝图片的接口，跨 OpenAI/Anthropic/Gemini 与 native/text/auto 模式，操作一个 AX 中没有文字、必须由真正 OCR 识别的自绘控件；`npm run test:computer` 保留可选视觉传输、原生输入/停止/Plan 验收；`npm run test:music` 在实际 Tom Music 构建的隔离资料库上用 native/text 两种模式验证 ⌘F / Esc。**模型决策为 synthetic loopback；OCR、截图、AX、输入是真实本机操作，不是未执行的云端模型自治测试**。详见 `COMPUTER-USE-071.md`。
 
 ## 0.6.1 用户提供的新 logo
 
